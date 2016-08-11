@@ -5,6 +5,8 @@
 # import hbt as hbt
 # import bondwire as bw
 import laminate as lam
+import loadline as lline
+import lump as lump
 
 import hycohanz as hfss
 
@@ -16,9 +18,17 @@ oProject=hfss.new_project(oDesktop)
 oDesign=hfss.insert_design(oProject,"HFSSDesign1","DrivenModal")
 oEditor=hfss.set_active_editor(oDesign)
 
-lam7910=lam.add_laminate(oDesktop)
-
-
+#AddInfoMessage('Before make Lam ') 
+lam7910=lam.MakeLam(oDesktop)
+l1=lline.Loadline()
+sd1=lump.SMD(oEditor,0,0,0,0)
+#sd1=lump.SMD(oEditor,1,0,100,100)
+#sd1=lump.SMD(oEditor,0,1,300,0)
+#sd1=lump.SMD(oEditor,1,1,300,100)
+#sd1=lump.SMD(oEditor,0,3,600,0)
+#sd1=lump.SMD(oEditor,1,3,600,100)
+#AddInfoMessage('After') 
+tf=lump.IND(oEditor,20,50,20,50,3)
 # hfss.add_property(oDesign, "xcenter", hfss.Expression("1m"))
 # hfss.add_property(oDesign, "ycenter", hfss.Expression("2m"))
 # hfss.add_property(oDesign, "zcenter", hfss.Expression("3m"))
